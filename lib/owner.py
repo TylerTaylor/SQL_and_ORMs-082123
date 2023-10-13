@@ -122,7 +122,7 @@ class Owner:
             WHERE owner_id = ?
         """
 
-        db_cursor.execute(sql, (self.id, ))
+        rows = db_cursor.execute(sql, (self.id, )).fetchall()
 
-        rows = db_cursor.fetchall()
         return [Pet.instance_from_db(row) for row in rows]
+
